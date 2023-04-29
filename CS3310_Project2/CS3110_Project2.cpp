@@ -14,26 +14,32 @@
 using namespace std;
 using namespace std::chrono;
 
+int findKmerge(vector<int>, int);
 void mergeSort(vector<int>&, int, int);
 void merge(vector<int>&, int, int, int);
+int findKquick(vector<int>, int);
+void quickSort();
 
 int main()
 {
     srand(time(0));
     vector<int> a;
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 10; i++)
     {
         a.push_back(rand() % 100);
         cout << a.at(i) << " ";
     }
     cout << endl << endl;
     
-    mergeSort(a, 0, a.size());
- 
-    for (int i = 0; i < a.size(); i++)
-    {
-        cout << a.at(i) << " ";
-    }
+    findKmerge(a, 3);
+    findKquick(a, 3);
+}
+
+int findKmerge(vector<int> a, int k)
+{
+    mergeSort(a, 0, a.size() - 1);
+    cout << "The " << "kth (" << k << ") smallest element is " << a.at(k) << endl;
+    return a.at(k);
 }
 
 void mergeSort(vector<int>& a, int low, int high)
@@ -53,7 +59,7 @@ void merge(vector<int>& a, int low, int mid, int high)
     int j = mid + 1;
     vector<int> temp;
 
-    while (i <= mid && j < high)
+    while (i <= mid && j <= high)
     {
         if (a.at(i) < a.at(j))
         {
@@ -73,16 +79,24 @@ void merge(vector<int>& a, int low, int mid, int high)
         i++;
     }
 
-    while (j < high)
+    while (j <= high)
     {
         temp.push_back(a.at(j));
         j++;
     }
 
     int k = 0;
-    for (int l = low; l < temp.size(); l++)
+    for (int l = low; l <= high; l++)
     {
+        cout << temp.at(k) << " ";
         a.at(l) = temp.at(k);
         k++;
     }
+    cout << endl;
 }
+
+int findKquick(vector<int> a, int k)
+{
+    return a.at(k);
+}
+
