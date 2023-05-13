@@ -20,6 +20,8 @@ void merge(vector<int>&, int, int, int);
 int findKquick(vector<int>, int);
 void quickSort(vector<int>&, int, int, int);
 int partition(vector<int>&, int, int);
+int findKMM(vector<int>, int);
+void quickMM(vector<int>&, int, int, int);
 
 int main()
 {
@@ -149,4 +151,14 @@ int partition(vector<int>& a, int p, int q)
     a.at(pivotPos) = temp;
 
     return pivotPos;
+}
+
+int findKMM(vector<int>, int)
+{
+
+}
+
+void quickMM(vector<int>&, int, int, int)
+{
+
 }
